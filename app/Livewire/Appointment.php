@@ -3,22 +3,28 @@
 namespace App\Livewire;
 
 use App\Models\Appointment as AppointmentModel;
+use App\Models\Owner;
+use App\Models\Pet;
+use App\Models\Veterinarian;
 use Livewire\Component;
 
 class Appointment extends Component
 {
     public $isOpen;
     public $appointmentId;
+    public $owner_id;
     public $pet_id;
     public $veterinarian_id;
-    public $date;
-    public $time;
-    public $reason;
+    public $appointment_date;
+
 
     public function render()
     {
         return view('livewire.appointment', [
-            'appointments' => AppointmentModel::latest()->get()
+            'appointments' => AppointmentModel::latest()->get(),
+            'owners' => Owner::all(),
+            'pets' => Pet::all(),
+            'veterinarians' => Veterinarian::all(),
         ]);
     }
 
@@ -38,10 +44,9 @@ class Appointment extends Component
         $appointment = AppointmentModel::findOrFail($id);
         $this->appointmentId = $id;
         $this->pet_id = $appointment->pet_id;
+        $this->owner_id = $appointment->owner_id;
         $this->veterinarian_id = $appointment->veterinarian_id;
-        $this->date = $appointment->date;
-        $this->time = $appointment->time;
-        $this->reason = $appointment->reason;
+        $this->appointment_date = $appointment->appointment_date;
 
         $this->isOpen = true;
     }
@@ -50,19 +55,17 @@ class Appointment extends Component
     {
         $this->pet_id = '';
         $this->veterinarian_id = '';
-        $this->date = '';
-        $this->time = '';
-        $this->reason = '';
+        $this->owner_id = '';
+        $this->appointment_date = '';
     }
 
     public function store()
     {
         $data = $this->validate([
             'pet_id' => 'required|integer',
+            'owner_id' => 'required|integer',
             'veterinarian_id' => 'required|integer',
-            'date' => 'required|date',
-            'time' => 'required|time',
-            'reason' => 'required|string',
+            'appointment_date' => 'required|date',
         ]);
 
         if ($this->appointmentId) {

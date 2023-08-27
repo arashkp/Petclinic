@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 @endif
-                <button wire:click="store" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button wire:click="store" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Save
                 </button>
                 <button wire:click="close" class="ml-3 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
