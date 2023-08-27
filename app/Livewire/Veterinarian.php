@@ -8,9 +8,10 @@ use Livewire\Component;
 class Veterinarian extends Component
 {
     public $isOpen;
-    public $veterinarianId;
+    public $vetId;
     public $name;
     public $specialization;
+    public $available_timings;
 
     public function render()
     {
@@ -33,9 +34,10 @@ class Veterinarian extends Component
     public function edit($id)
     {
         $veterinarian = VeterinarianModel::findOrFail($id);
-        $this->veterinarianId = $id;
+        $this->vetId = $id;
         $this->name = $veterinarian->name;
         $this->specialization = $veterinarian->specialization;
+        $this->available_timings = $veterinarian->available_timings;
 
         $this->isOpen = true;
     }
@@ -44,6 +46,7 @@ class Veterinarian extends Component
     {
         $this->name = '';
         $this->specialization = '';
+        $this->available_timings = '';
     }
 
     public function store()
@@ -51,10 +54,11 @@ class Veterinarian extends Component
         $data = $this->validate([
             'name' => 'required|string',
             'specialization' => 'required|string',
+            'available_timings' => 'required|string',
         ]);
 
-        if ($this->veterinarianId) {
-            $veterinarian = VeterinarianModel::find($this->veterinarianId);
+        if ($this->vetId) {
+            $veterinarian = VeterinarianModel::find($this->vetId);
             if ($veterinarian) {
                 $veterinarian->update($data);
             }
