@@ -49,6 +49,14 @@ A demonstration of a Pet Clinic application built with the TALL (Tailwind CSS, A
 - Deploy the Laravel application using the source-to-image (S2I) method, pointing to the provided GitHub repository.
 - **Important**: Configure necessary environment variables such as `DB_CONNECTION`, `DB_HOST`, `DB_USERNAME`, `DB_PASSWORD`, `APP_KEY`, etc., in the OpenShift console under the **Environment** tab.
 
+## Seeding the Database
+
+You can seed your database with some predefined values to get started with the application. This is particularly useful for having some initial data to work with.
+
+```bash
+php artisan db:seed
+```
+
 Access the application by navigating to the provided OpenShift route after successful deployment.
 
 ## Conclusion and Further Improvements
