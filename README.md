@@ -18,11 +18,6 @@ A demonstration of a Pet Clinic application built with the TALL (Tailwind CSS, A
 - Add [Alpine.js](https://github.com/alpinejs/alpine) for frontend interactions.
 - Integrate Laravel with [Livewire](https://laravel-livewire.com/) for dynamic components.
 
-## Database Configuration: PostgreSQL
-
-- Set up a PostgreSQL database locally for development.
-- Update Laravel's `.env` configuration to connect with PostgreSQL:
-
 
 
 ## Developing the Pet Clinic Application
@@ -49,7 +44,19 @@ A demonstration of a Pet Clinic application built with the TALL (Tailwind CSS, A
 - Deploy the Laravel application using the source-to-image (S2I) method, pointing to the provided GitHub repository.
 - **Important**: Configure necessary environment variables such as `DB_CONNECTION`, `DB_HOST`, `DB_USERNAME`, `DB_PASSWORD`, `APP_KEY`, etc., in the OpenShift console under the **Environment** tab.
 
-## Seeding the Database
+## Seeding the Database (Local Development)
+Run these commands to make the project ready to run on your local
+```
+php artisan key:generate
+composer install
+npm install
+npm run dev
+php artisan migrate
+```
+## Database Configuration: PostgreSQL
+
+- Set up a PostgreSQL database locally for development.
+- Update Laravel's `.env` configuration to connect with PostgreSQL:
 
 You can seed your database with some predefined values to get started with the application. This is particularly useful for having some initial data to work with.
 
