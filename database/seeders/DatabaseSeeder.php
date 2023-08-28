@@ -73,28 +73,28 @@ class DatabaseSeeder extends Seeder
         // Pets seeding
         $buddy = Pet::create([
             'name' => 'Buddy',
-            'type' => 'dog',
+            'type' => 'Dog',
             'breed' => 'Golden Retriever',
             'health_notes' => 'Healthy but needs regular checkups'
         ]);
 
         $lucy = Pet::create([
             'name' => 'Lucy',
-            'type' => 'cat',
+            'type' => 'Cat',
             'breed' => 'Siamese',
             'health_notes' => 'Mild allergies'
         ]);
 
         $rex = Pet::create([
             'name' => 'Rex',
-            'type' => 'dog',
+            'type' => 'Dog',
             'breed' => 'Bulldog',
             'health_notes' => 'Eats too much'
         ]);
 
         $whiskers = Pet::create([
             'name' => 'Whiskers',
-            'type' => 'cat',
+            'type' => 'Cat',
             'breed' => 'Tabby',
             'health_notes' => 'Needs vaccination'
         ]);
